@@ -15,6 +15,7 @@ import {
 import { ChatBox } from "../components/ChatBox"
 import { InputString } from "../components/Input"
 import { ButtonSmall } from "../components/Button"
+import { Head } from "../components/Head"
 
 
 
@@ -63,8 +64,13 @@ const Chat = ({ navigation, route }: any) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.chatContainer}>
                 <ScrollView style={styles.scrollContainer}>
-                    <Text style={styles.title}>채팅</Text>
+                    <ChatBox key={2} isMe={false} message={'dsvs'}> </ChatBox>      
+                    <ChatBox key={3} isMe={false} message={'dsvs'}> </ChatBox>      
+                    <ChatBox key={4} isMe={false} message={'dsvs'}> </ChatBox>      
+                    <ChatBox key={5} isMe={false} message={'dsvs'}> </ChatBox>      
+                    <ChatBox key={6} isMe={false} message={'dsvs'}> </ChatBox>      
                     { ChatArray }
+
 
                     <View style={styles.br}></View>
                 </ScrollView>

@@ -24,7 +24,6 @@ const InputStringDefault = (props: InputType, ref: any) => {
                 onChangeText={onChangeText}
                 onSubmitEditing={handleSend}
                 value={value}
-                autoFocus={true}
                 blurOnSubmit={false}
                 ref={ref}
             />

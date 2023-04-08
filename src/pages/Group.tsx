@@ -18,22 +18,16 @@ import { InputString } from "../components/Input"
 
 
 
-const Login = ({ navigation, route }: any) => {
+const Group = ({ navigation, route }: any) => {
     const ref = React.useRef()
     const [text, onChangeText] = React.useState('');
 
     const onPressNext = () => {
-        navigation.navigate('Main')
+        navigation.navigate('Chat')
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>이름을 입력해주세요</Text>
-
-            <View style={styles.subContainer}>
-                <InputString value={text} onChangeText={onChangeText} onSend={onPressNext}></InputString>
-            </View>
-
             <View style={styles.buttonContainer}>
                 <Button title="다음" onPress={onPressNext}></Button>
             </View>
@@ -73,4 +67,4 @@ const styles = StyleSheet.create({
 
 
 
-export { Login };
+export { Group };
