@@ -15,6 +15,15 @@ function Button(props: ButtonType) {
   );
 }
 
+function ButtonSmall(props: ButtonType) {
+    const { onPress, title } = props;
+    return (
+      <Pressable style={stylesSmall.button} onPress={onPress}>
+        <Text style={stylesSmall.text}>{title}</Text>
+      </Pressable>
+    );
+  }
+
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
@@ -34,4 +43,25 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Button }
+
+const stylesSmall = StyleSheet.create({
+    button: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 50,
+      height: 50,
+
+      borderRadius: 6,
+      elevation: 3,
+      backgroundColor: 'white',
+    },
+    text: {
+      fontSize: 16,
+      lineHeight: 21,
+      fontWeight: 'bold',
+      letterSpacing: 0.25,
+      color: 'black',
+    },
+  });
+
+export { Button, ButtonSmall }

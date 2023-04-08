@@ -14,6 +14,7 @@ import {
 
 import { ChatBox } from "../components/ChatBox"
 import { InputString } from "../components/Input"
+import { ButtonSmall } from "../components/Button"
 
 
 
@@ -25,13 +26,16 @@ const Chat = ({ navigation, route }: any) => {
             name: "ss",
             message: "dvd"
         }
-    ]);    
+    ]);
 
     const [userName, updateUsername] = React.useState('huh');
+    const [text, onChangeText] = React.useState('');
+
     const ref: any = React.useRef()
 
 
     const handleSend = () => {
+        ref.current.focus()
         const chatMessage = ref.current._internalFiberInstanceHandleDEV.memoizedProps.value
 
         let chat = {
@@ -40,10 +44,12 @@ const Chat = ({ navigation, route }: any) => {
             message: chatMessage
         }
         updateChatList(chatList.concat(chat))
+        onChangeText('')
     
     }
 
     useEffect(() => {
+        ref.current.focus()
         updateChatList([])
     }, [])
 
@@ -59,21 +65,21 @@ const Chat = ({ navigation, route }: any) => {
                 <ScrollView style={styles.scrollContainer}>
                     <Text style={styles.title}>채팅</Text>
                     { ChatArray }
-                    <ChatBox isMe={false} message="dd"> </ChatBox>
-                    <ChatBox isMe={false} message="Just Test"> </ChatBox>
-                    <ChatBox isMe={false} message="Let Do This"> </ChatBox>
-                    <ChatBox isMe={false} message="Yaahhhhhhhdsvgsdvsdvszdv"> </ChatBox>
-                    <ChatBox isMe={false} message="THIS IS THEEEEEEEEEEEEEEEEEEEE WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"> </ChatBox>
-                    <ChatBox isMe={true} message="THIS IS THEEEEEEEEEEEEEEEEEEEE WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"> </ChatBox>
-                    <ChatBox isMe={true} message="THIS IS THEEEEEEEEEEEEEEEEEEEE WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"> </ChatBox>
-                    <ChatBox isMe={false} message="Yaahhhhhhhdsvgsdvsdvszdv"> </ChatBox>
-                    <ChatBox isMe={false} message="Yaahhhhhhhdsvgsdvsdvszdv"> </ChatBox>
 
                     <View style={styles.br}></View>
                 </ScrollView>
             </View>
             <View style={styles.inputContainer}>
-                <InputString ref={ref} onSend={handleSend}></InputString>
+                <View style={styles.rowContainer}>
+                    <View style={{flex: 0.8}}>
+                        <InputString value={text} onChangeText={onChangeText} ref={ref} onSend={handleSend}></InputString>
+                    </View>
+                    <View style={{flex: 0.2, justifyContent: "center", alignItems: 'flex-end'}}>
+                        <ButtonSmall title='>' onPress={handleSend}></ButtonSmall>
+                    </View>
+
+
+                </View>
             </View>
         </SafeAreaView>
     );
@@ -83,8 +89,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'black',
-    padding: 20,
-    paddingTop: 40,
+    padding: 10,
+    paddingTop: 10,
   },
   chatBox: {
     maxWidth: 300,
@@ -110,9 +116,15 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flex: 1, 
-    flexDirection: "column-reverse"
+    flexDirection: "column-reverse",
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    backgroundColor: 'black'
+    
 
   },
+
   title: {
     color: "#ffffff",
     fontSize: 24,

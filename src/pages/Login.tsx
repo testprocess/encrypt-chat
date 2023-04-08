@@ -20,6 +20,7 @@ import { InputString } from "../components/Input"
 
 const Login = ({ navigation, route }: any) => {
     const ref = React.useRef()
+    const [text, onChangeText] = React.useState('');
 
     const onPressNext = () => {
         navigation.navigate('Chat')
@@ -30,7 +31,7 @@ const Login = ({ navigation, route }: any) => {
             <Text style={styles.title}>이름을 입력해주세요</Text>
 
             <View style={styles.subContainer}>
-                <InputString onSend={onPressNext}></InputString>
+                <InputString value={text} onChangeText={onChangeText} onSend={onPressNext}></InputString>
             </View>
 
             <View style={styles.buttonContainer}>

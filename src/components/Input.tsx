@@ -3,19 +3,29 @@ import {SafeAreaView, StyleSheet, TextInput} from 'react-native';
 
 type InputType = {
     onSend: any; 
+    value: string;
+    onChangeText: any
 }
 
 const InputStringDefault = (props: InputType, ref: any) => {
-    const { onSend } = props
-    const [text, onChangeText] = React.useState('');
+    const { onSend, value, onChangeText } = props
+
+    const handleSend = () => {
+        onSend()
+    }
 
     return (
         <SafeAreaView>
             <TextInput
+                editable
+                multiline
+                numberOfLines={3}
                 style={styles.input}
                 onChangeText={onChangeText}
-                onSubmitEditing={onSend}
-                value={text}
+                onSubmitEditing={handleSend}
+                value={value}
+                autoFocus={true}
+                blurOnSubmit={false}
                 ref={ref}
             />
         </SafeAreaView>
