@@ -1,19 +1,25 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, TextInput} from 'react-native';
 
-const InputString = () => {
-  const [text, onChangeText] = React.useState('');
-  const [number, onChangeNumber] = React.useState('');
+type InputType = {
+    onSend: any; 
+}
 
-  return (
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-      />
-    </SafeAreaView>
-  );
+const InputStringDefault = (props: InputType, ref: any) => {
+    const { onSend } = props
+    const [text, onChangeText] = React.useState('');
+
+    return (
+        <SafeAreaView>
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangeText}
+                onSubmitEditing={onSend}
+                value={text}
+                ref={ref}
+            />
+        </SafeAreaView>
+    );
 };
 
 const styles = StyleSheet.create({
@@ -29,5 +35,7 @@ const styles = StyleSheet.create({
     color: "#ffffff"
   },
 });
+
+const InputString = React.forwardRef(InputStringDefault)
 
 export { InputString };
