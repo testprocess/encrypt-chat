@@ -19,6 +19,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Login } from "./src/pages/Login"
 import { Chat } from "./src/pages/Chat"
 import { Group } from "./src/pages/Group"
+import { CreateGroup } from "./src/pages/CreateGroup"
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,17 +29,27 @@ const onPressLearnMore = () => {
   Alert.alert("dd")
 }
 
-const Main = () =>  {
+const GroupNavigator = () =>  {
   return (
-      <Tab.Navigator>
-        <Tab.Screen name="Group" options={{ headerShown: false }} component={Group} />
-        <Tab.Screen name="Chat" options={{ headerShown: false }} component={Chat} />
-      </Tab.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="Groups" options={{ headerShown: false }} component={Group} />
+      <Stack.Screen name="CreateGroup" options={{ headerShown: false }} component={CreateGroup} />
+    </Stack.Navigator>
+
 
   );
 }
 
 
+const MainNavigator = () =>  {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Group" options={{ headerShown: false }} component={GroupNavigator} />
+      <Tab.Screen name="Chat" options={{ headerShown: false }} component={Chat} />
+    </Tab.Navigator>
+
+  );
+}
 
 const App = () => {
 
@@ -46,7 +57,7 @@ const App = () => {
     <NavigationContainer theme={DarkTheme}>
       <Stack.Navigator>
         <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
-        <Stack.Screen name="Main" options={{ headerShown: false }} component={Main} />
+        <Stack.Screen name="Main" options={{ headerShown: false }} component={MainNavigator} />
 
       </Stack.Navigator>
     </NavigationContainer>
