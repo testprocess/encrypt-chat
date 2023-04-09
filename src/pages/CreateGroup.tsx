@@ -14,13 +14,17 @@ import {
 
 import { Button } from "../components/Button"
 import { InputString } from "../components/Input"
+import { Label } from "../components/Label"
+
 
 
 
 
 const CreateGroup = ({ navigation, route }: any) => {
     const ref = React.useRef()
-    const [text, onChangeText] = React.useState('');
+    const [text, onChangeGroupName] = React.useState('');
+    const [description, onChangeGroupDescription] = React.useState('');
+
 
     const onPressNext = () => {
         navigation.navigate('Chat')
@@ -28,12 +32,20 @@ const CreateGroup = ({ navigation, route }: any) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>그룹 생성</Text>
+            <Text style={styles.title}>그룹 만들기</Text>
 
-            <InputString value={text} onChangeText={onChangeText} onSend={onPressNext}></InputString>
+            <View style={styles.inputContainer}>
+                <Label value='그룹 이름'></Label>
+                <InputString value={text} onChangeText={onChangeGroupName}></InputString>
+            </View>
+
+            <View style={styles.inputContainer}>
+                <Label value='그룹 설명'></Label>
+                <InputString value={description} onChangeText={onChangeGroupDescription}></InputString>
+            </View>
 
             <View style={styles.buttonContainer}>
-                <Button title="다음" onPress={onPressNext}></Button>
+                <Button title="만들기" onPress={onPressNext}></Button>
             </View>
         </SafeAreaView>
     );
@@ -55,6 +67,9 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1, 
     flexDirection: "column-reverse"
+  },
+  inputContainer: {
+    marginTop: 16,
   },
   title: {
     color: "#ffffff",

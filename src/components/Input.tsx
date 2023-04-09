@@ -2,10 +2,12 @@ import React from 'react';
 import {SafeAreaView, StyleSheet, TextInput} from 'react-native';
 
 type InputType = {
-    onSend: any; 
+    onSend?: any; 
     value: string;
     onChangeText: any
 }
+
+
 
 const InputStringDefault = (props: InputType, ref: any) => {
     const { onSend, value, onChangeText } = props

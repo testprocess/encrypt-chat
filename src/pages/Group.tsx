@@ -93,7 +93,7 @@ const Group = ({ navigation, route }: any) => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <Button title="그룹 생성" onPress={onPressNext}></Button>
+                <Button title="그룹 만들기" onPress={onPressNext}></Button>
             </View>
         </SafeAreaView>
     );
