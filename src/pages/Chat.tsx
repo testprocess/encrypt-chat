@@ -11,6 +11,7 @@ import {
   LogBox
 
 } from 'react-native';
+import { io } from "socket.io-client";
 
 import { ChatBox } from "../components/ChatBox"
 import { InputString } from "../components/Input"
@@ -33,6 +34,7 @@ const Chat = ({ navigation, route }: any) => {
     const [text, onChangeText] = React.useState('');
 
     const ref: any = React.useRef()
+    const ws: any = React.useRef(null);
 
 
     const handleSend = () => {
@@ -46,11 +48,20 @@ const Chat = ({ navigation, route }: any) => {
         }
         updateChatList(chatList.concat(chat))
         onChangeText('')
-    
+        ws.current.emit("send", {message: chatMessage})
     }
 
     useEffect(() => {
         ref.current.focus()
+        ws.current = io("http://10.0.2.2:8000");
+        console.log("sdd", ws.current)
+
+        ws.current.on("connection", () => {
+        });
+        
+        ws.current.on("disconnect", () => {
+            console.log(ws.current.id);
+        });
         updateChatList([])
     }, [])
 
