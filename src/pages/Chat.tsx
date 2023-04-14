@@ -23,11 +23,11 @@ import { Head } from "../components/Head"
 
 const Chat = ({ navigation, route }: any) => {
     const [chatList, updateChatList] = React.useState([
-        {
-            key: 2,
-            name: "ss",
-            message: "dvd"
-        }
+      {
+        key: 2,
+        name: "ss",
+        message: "dvd"
+      }
     ]);
 
     const [userName, updateUsername] = React.useState('huh');
@@ -53,10 +53,15 @@ const Chat = ({ navigation, route }: any) => {
 
     useEffect(() => {
         ref.current.focus()
-        ws.current = io("http://10.0.2.2:8000");
+        ws.current = io("http://10.0.2.2:8000/chat");
         console.log("sdd", ws.current)
 
         ws.current.on("connection", () => {
+        });
+
+        ws.current.on("receive", (data: any) => {
+          console.log("sdd", data)
+
         });
         
         ws.current.on("disconnect", () => {
@@ -75,11 +80,6 @@ const Chat = ({ navigation, route }: any) => {
         <SafeAreaView style={styles.container}>
             <View style={styles.chatContainer}>
                 <ScrollView style={styles.scrollContainer}>
-                    <ChatBox key={2} isMe={false} message={'dsvs'}> </ChatBox>      
-                    <ChatBox key={3} isMe={false} message={'dsvs'}> </ChatBox>      
-                    <ChatBox key={4} isMe={false} message={'dsvs'}> </ChatBox>      
-                    <ChatBox key={5} isMe={false} message={'dsvs'}> </ChatBox>      
-                    <ChatBox key={6} isMe={false} message={'dsvs'}> </ChatBox>      
                     { ChatArray }
 
 

@@ -21,55 +21,13 @@ import { GroupBox } from "../components/GroupBox"
 const Group = ({ navigation, route }: any) => {
     const ref = React.useRef()
     const [groups, onChangeGroup] = React.useState([
-        {
-            key: 1,
-            name: "Test Group",
-            description: "Test Group",
-            personnel: 87,
-            tag: ["Test Group", "Test Group"]
-        },
-        {
-            key: 2,
-            name: "Test Group",
-            description: "Test Group",
-            personnel: 32,
-            tag: ["Test Group", "Test Group"]
-        },
-        {
-            key: 3,
-            name: "Test Group",
-            description: "Test Group",
-            personnel: 7,
-            tag: ["Test Group", "Test Group"]
-        },
-        {
-            key: 4,
-            name: "Test Group",
-            description: "Test Group",
-            personnel: 7,
-            tag: ["Test Group", "Test Group"]
-        },
-        {
-            key: 5,
-            name: "Test Group",
-            description: "Test Group",
-            personnel: 7,
-            tag: ["Test Group", "Test Group"]
-        },
-        {
-            key: 6,
-            name: "Test Group",
-            description: "Test Group",
-            personnel: 7,
-            tag: ["Test Group", "Test Group"]
-        },
-        {
-            key: 7,
-            name: "Test Group",
-            description: "Test Group",
-            personnel: 7,
-            tag: ["Test Group", "Test Group"]
-        },
+      {
+        key: 0,
+        name: "Test Group",
+        description: "Test Group",
+        personnel: 87,
+        tag: ["Test Group", "Test Group"]
+      }
     ]);
 
     const GroupList = groups.map(group => {

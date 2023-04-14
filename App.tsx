@@ -43,10 +43,10 @@ const GroupNavigator = () =>  {
 
 const MainNavigator = () =>  {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Group" options={{ headerShown: false }} component={GroupNavigator} />
-      <Tab.Screen name="Chat" options={{ headerShown: false }} component={Chat} />
-    </Tab.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="Group" options={{ headerShown: false }} component={GroupNavigator} />
+      <Stack.Screen name="Chat" options={{ headerShown: false }} component={Chat} />
+    </Stack.Navigator>
 
   );
 }

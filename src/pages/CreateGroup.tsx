@@ -15,6 +15,7 @@ import {
 import { Button } from "../components/Button"
 import { InputString } from "../components/Input"
 import { Label } from "../components/Label"
+import { Head } from "../components/Head"
 
 
 
@@ -32,7 +33,8 @@ const CreateGroup = ({ navigation, route }: any) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>그룹 만들기</Text>
+          <Head navigation={navigation} title='그룹 만들기'></Head>
+            {/* <Text style={styles.title}>그룹 만들기</Text> */}
 
             <View style={styles.inputContainer}>
                 <Label value='그룹 이름'></Label>
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
 
   },
   buttonContainer: {
-    flex: 1, 
+    flex: 3, 
     flexDirection: "column-reverse"
   },
   inputContainer: {
