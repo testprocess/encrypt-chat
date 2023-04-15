@@ -34,8 +34,18 @@ const Group = ({ navigation, route }: any) => {
   ]);
 
   const GroupList = groups.map(group => {
-      return <GroupBox name={group.name} description={group.description} personnel={group.personnel} tag={group.tag}></GroupBox>
+      return (
+        <Pressable onPress={() => {onClickGroup({ group: group })}}>
+          <GroupBox name={group.name} description={group.description} personnel={group.personnel} tag={group.tag}></GroupBox>
+
+        </Pressable>
+      )
   })  
+
+  const onClickGroup = ({ group }: any) => {
+    navigation.navigate('Chat', { group: group })
+  }
+
 
   const onPressNext = () => {
       navigation.navigate('CreateGroup')

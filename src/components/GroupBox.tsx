@@ -22,6 +22,7 @@ type ChatType = {
 
 const GroupBox = (props: ChatType) => {
     const { name, description,personnel } = props;
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{name}</Text>

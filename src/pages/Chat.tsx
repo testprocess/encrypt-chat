@@ -79,6 +79,7 @@ const Chat = ({ navigation, route }: any) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.chatContainer}>
+              <Text style={styles.title}>{route.params.group.name}</Text>
                 <ScrollView style={styles.scrollContainer}>
                     { ChatArray }
 
