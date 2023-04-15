@@ -11,6 +11,7 @@ import {
 
 } from 'react-native';
 
+import { useAppDispatch } from "../../Context"
 
 import { Button } from "../components/Button"
 import { InputString } from "../components/Input"
@@ -19,42 +20,50 @@ import { GroupBox } from "../components/GroupBox"
 
 
 const Group = ({ navigation, route }: any) => {
-    const ref = React.useRef()
-    const [groups, onChangeGroup] = React.useState([
-      {
-        key: 0,
-        name: "Test Group",
-        description: "Test Group",
-        personnel: 87,
-        tag: ["Test Group", "Test Group"]
-      }
-    ]);
+  const dispatch: any = useAppDispatch()
 
-    const GroupList = groups.map(group => {
-        return <GroupBox name={group.name} description={group.description} personnel={group.personnel} tag={group.tag}></GroupBox>
-    })  
-
-    const onPressNext = () => {
-        navigation.navigate('CreateGroup')
+  const ref = React.useRef()
+  const [groups, onChangeGroup] = React.useState([
+    {
+      key: 0,
+      name: "Test Group",
+      description: "Test Group",
+      personnel: 87,
+      tag: ["Test Group", "Test Group"]
     }
+  ]);
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>그룹</Text>
+  const GroupList = groups.map(group => {
+      return <GroupBox name={group.name} description={group.description} personnel={group.personnel} tag={group.tag}></GroupBox>
+  })  
 
+  const onPressNext = () => {
+      navigation.navigate('CreateGroup')
+  }
 
-            <View style={styles.scrollContainer}>
-                <ScrollView>  
-                    { GroupList }
+  const onLogout = () => {
+    dispatch({ type: "isSignedIn:false" })
+    setTimeout(() => {
+      navigation.navigate('Login')
+    }, 1000);
+  }
 
-                </ScrollView>
-            </View>
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>그룹</Text>
 
-            <View style={styles.buttonContainer}>
-                <Button title="그룹 만들기" onPress={onPressNext}></Button>
-            </View>
-        </SafeAreaView>
-    );
+      <View style={styles.scrollContainer}>
+        <ScrollView>  
+          { GroupList }
+        </ScrollView>
+        <Button title="로그아웃" onPress={onLogout}></Button>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Button title="그룹 만들기" onPress={onPressNext}></Button>
+      </View>
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({

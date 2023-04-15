@@ -15,16 +15,21 @@ import {
 import { Button } from "../components/Button"
 import { InputString } from "../components/Input"
 
-
+import { useAppDispatch } from "../../Context"
 
 
 const Login = ({ navigation, route }: any) => {
-    const ref = React.useRef()
-    const [text, onChangeText] = React.useState('');
+  const dispatch: any = useAppDispatch()
 
-    const onPressNext = () => {
-        navigation.navigate('Main')
-    }
+  const ref = React.useRef()
+  const [text, onChangeText] = React.useState('');
+
+  const onPressNext = () => {
+    dispatch({ type: "isSignedIn:true" })
+    setTimeout(() => {
+      navigation.navigate('Main')
+    }, 1000);
+  }
 
     return (
         <SafeAreaView style={styles.container}>
