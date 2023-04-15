@@ -77,29 +77,27 @@ const Chat = ({ navigation, route }: any) => {
 
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.chatContainer}>
-              <Text style={styles.title}>{route.params.group.name}</Text>
-                <ScrollView style={styles.scrollContainer}>
-                    { ChatArray }
+      <SafeAreaView style={styles.container}>
+        <View style={styles.chatContainer}>
+          <Text style={styles.title}>{route.params.group.name}</Text>
+          <ScrollView style={styles.scrollContainer}>
+            { ChatArray }
+            <View style={styles.br}></View>
+          </ScrollView>
+        </View>
 
-
-                    <View style={styles.br}></View>
-                </ScrollView>
+        <View style={styles.inputContainer}>
+          <View style={styles.rowContainer}>
+            <View style={{flex: 0.8}}>
+                <InputString value={text} onChangeText={onChangeText} ref={ref} onSend={handleSend}></InputString>
             </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.rowContainer}>
-                    <View style={{flex: 0.8}}>
-                        <InputString value={text} onChangeText={onChangeText} ref={ref} onSend={handleSend}></InputString>
-                    </View>
-                    <View style={{flex: 0.2, justifyContent: "center", alignItems: 'flex-end'}}>
-                        <ButtonSmall title='>' onPress={handleSend}></ButtonSmall>
-                    </View>
-
-
-                </View>
+            <View style={{flex: 0.2, justifyContent: "center", alignItems: 'flex-end'}}>
+                <ButtonSmall title='>' onPress={handleSend}></ButtonSmall>
             </View>
-        </SafeAreaView>
+
+          </View>
+        </View>
+      </SafeAreaView>
     );
 };
 

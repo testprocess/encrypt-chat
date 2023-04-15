@@ -1,7 +1,9 @@
 import React, { ReactElement, JSXElementConstructor, createContext, useReducer, useState, useContext } from "react";
 
 const initialState: any = {
-    isSignedIn: false
+    isSignedIn: false,
+    userId: '',
+    userName: ''
 }
 
 function reducer(state: any, action: any) {
